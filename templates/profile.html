@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="{{ url_for('static', filename='style/bootstrap.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='style/style.css') }}">
+  <script src="{{ url_for('static', filename='js/jquery.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/popper.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
+
+  <title>Профиль пользователя</title>
+</head>
+
+<body>
+  <!-- HEADER -->
+  <header class="header">
+    <div class="header__nav">
+      <div class="container">
+        <!-- NAVIGATION -->
+        <nav class="navbar-expand-md d-flex flex-wrap align-items-center justify-content-between">
+          <a class="logo" href="/">Get <span class="logo-blue">text</span></a>
+          <button class="navbar-toggler header__nav-button" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+            aria-label="Toggle navigation">
+            <span class="far fa-bars"></span>
+          </button>
+          <div class="collapse navbar-collapse flex-grow-0" id="navbarSupportedContent">
+            <ul class="navbar-nav ">
+              <li class="nav-item">
+                <a class="header__nav-link" href="#">Главная</a>
+              </li>
+              <li class="nav-item">
+                <a class="header__nav-link" href="#about-section">О нас</a>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="header__nav-link" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+                  aria-haspopup="true" aria-expanded="false">
+                  Контакты
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <a class="dropdown-item" href="tel:+998907777777">+ 79962911326</a>
+                  <div class="dropdown-divider"></div>
+                  <a class="dropdown-item" href="mailto:PrCar@mail.my">amir-shakirov-2002@mail.ru</a>
+                </div>
+              </li>
+              
+              <li class="nav-item">
+                <a class="header__nav-link" href="{{ url_for('logout') }}">Выйти</a>
+              </li>
+              
+              <!-- Модальное окно регистрации -->
+              <div id="registration-modal" class="modal">
+                <div class="modal-content">
+                  <span class="close">&times;</span>
+                  <h2>Регистрация</h2>
+                  <form action="/register" method="post">
+                    <input type="text" name="username" placeholder="Имя пользователя" required>
+                    <input type="email" name="email" placeholder="Электронная почта" required>
+                    <input type="password" name="password" placeholder="Пароль" required>
+
+                  </form>
+                </div>
+              </div>
+            </ul>
+          </div>
+
+          <a href="#" class="header__nav-search">
+            <span class="fal fa-search"></span>
+          </a>
+        </nav>
+        <!-- NAVIGATION END-->
+      </div>
+    </div>
+  </header>
+
+  <!-- MAIN -->
+  <main>
+    <!-- SECTION -->
+    <section class="main__current">
+      <div class="container current__grid">
+        <div class="recognition-container">
+          <h1>Профиль пользователя</h1>
+          <section>
+            <h2>Личная информация</h2>
+            <ul>
+              <li><strong>Имя пользователя:</strong> {{ user.username }}</li>
+              <li><strong>Email:</strong> {{ user.email }}</li>
+              <!-- Другие данные пользователя -->
+            </ul>
+          </section>
+
+          <section>
+            <h2>Настройки</h2>
+            <!-- Форма для изменения настроек -->
+            <form action="{{ url_for('profile') }}" method="post">
+              <label for="username">Имя пользователя:</label>
+              <input type="text" id="username" name="username" value="{{ user.username }}" required>
+              <!-- Другие поля для настроек -->
+              <button type="submit">Сохранить изменения</button>
+            </form>
+          </section>
+
+          <section>
+            <h2>Дополнительная информация</h2>
+            <h2>5 последних распознанных текста</h2>
+            <ul>
+              {% for query in queries %}
+              <li>{{ query.text }}</li>
+              {% else %}
+              <li>No queries found.</li>
+              {% endfor %}
+            </ul>
+          </section>
+        </div>
+      </div>
+    </section>
+    <!-- SECTION END-->
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <div class="row">
+        <div class="footer__box col-xl-3 col-md-5" id="about-section">
+          <a class="logo" href="#">Get<span class="logo-blue">Text</span></a>
+          <p class="footer__box-txt">
+            Мы предоставляем инструмент для загрузки изображений и автоматического распознавания текста на них.
+          </p>
+        </div>
+        <div class="footer__box col-xl-2 offset-xl-1 col-md-3">
+          <h3 class="footer__box-title">Навигация</h3>
+          <ul class="footer__list">
+              <li>
+                  <a href="#" class="footer__link">Главная</a>
+              </li>
+              <li>
+                  <a href="#about-section" class="footer__link">О нас</a>
+              </li>
+              <li>
+                  <a href="tel:+79962911326" class="footer__link">Контакты</a>
+              </li>
+              <li>
+                  <a href="mailto:amir.shakirov.02@gmail.com" class="footer__link">Почта</a>
+              </li>
+          </ul>
+      </div>
+        <div class="footer__box col-xl-3 col-md-5">
+          <div class="footer__social">
+            <h3 class="footer__social-title">Наши социальные сети</h3>
+            <ul>
+              <li><a href="https://vk.com/yak__v3" target="_blank">VK</a></li>
+              <li><a href="https://t.me/+79962911326" target="_blank">Telegram</a></li>
+              <li><a href="https://www.instagram.com/yak_v31" target="_blank">Instagram</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="footer__box col-xl-3 col-md-5">
+          <div class="footer__newslatter">
+            <h3 class="footer__newslatter-title">Новостная рассылка</h3>
+            <form method="post" action="/subscribe">
+              <input type="text" name="name" placeholder="Ваше имя" required>
+              <input type="email" name="email" placeholder="Ваш электронный адрес" required>
+              <button type="submit">Подписаться на новостную рассылку</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="footer__info">
+      <div class="container">
+        <div class="footer__info-inner">
+          <p class="footer__info-copyright">© 2024 Image Text Recognition.</p>
+          <ul class="footer__menu">
+            <li><a class="footer__menu-link" href="#">Главная</a></li>
+            <li><a class="footer__menu-link" href="#">Контакты</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="/static/js/jquery.js"></script>
+  <script src="/static/js/popper.js"></script>
+  <script src="/static/js/bootstrap.min.js"></script>
+  <script>
+    function copyTextToClipboard() {
+      var textToCopy = document.getElementById("text_output").innerText;
+      navigator.clipboard.writeText(textToCopy)
+        .then(function () {
+          alert("Text copied to clipboard!");
+        })
+        .catch(function (error) {
+          console.error("Unable to copy text: ", error);
+        });
+    }
+  </script>
+  <script>
+    // JavaScript для открытия и закрытия модального окна регистрации
+    var modal = document.getElementById("registration-modal");
+    var openBtn = document.getElementById("open-registration-modal");
+    var closeBtn = document.getElementsByClassName("close")[0];
+
+    openBtn.onclick = function () {
+      modal.style.display = "block";
+    }
+
+    closeBtn.onclick = function () {
+      modal.style.display = "none";
+    }
+
+    window.onclick = function (event) {
+      if (event.target == modal) {
+        modal.style.display = "none";
+      }
+    }
+  </script>
+</body>
+
+</html>

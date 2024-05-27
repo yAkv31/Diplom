@@ -1,0 +1,679 @@
+@import 'fonts.css';
+
+/* ROOT start */
+main {
+    margin-bottom: 120px; /* Добавляет отступ в 30 пикселей между основным содержанием и футером */
+}
+
+footer {
+    margin-top: 120px; /* Добавляет отступ в 30 пикселей между основным содержанием и футером */
+}
+
+:root {
+    --f400: 'PTSans-Regular';
+    --f700: 'PTSans-Bold';
+    --LR400: 'Lato-Regular';
+    --black: #000000;
+    --black_17: #171717;
+    --black_66: #666666;
+    --black_99: #999999;
+    --white: #ffffff;
+    --blue: #4A90E2;
+    --blue_65: rgba(74, 145, 226, 0.65);
+    --gray: #cecece;
+    --pagination: #E5E5E5;
+}
+
+body {
+    font-family: var(--f400);
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+.logo {
+    color: var(--white);
+    font-family: var(--LR400);
+    font-size: 14px;
+    line-height: 10px;
+}
+
+.logo:hover {
+    color: var(--white);
+}
+
+.logo-blue {
+    text-transform: uppercase;
+    background: var(--blue);
+    padding: 7px 6px;
+    border-radius: 3px;
+    margin-left: 7px;
+}
+
+.vehicle {
+    color: var(--white);
+    background: var(--blue);
+    border-radius: 3px;
+    padding: 7px 13px 6px;
+}
+
+.button-container {
+    display: inline-flex; /* Располагает кнопки в одну строку */
+    gap: 10px; /* Отступ между кнопками */
+}
+
+/* Стили для кнопок */
+.btn {
+    padding: 10px 15px; /* Внутренние отступы для кнопок */
+    border: none; /* Убираем границы */
+    background-color: #007bff; /* Цвет фона кнопок */
+    color: white; /* Цвет текста кнопок */
+    border-radius: 5px; /* Скругляем углы */
+    cursor: pointer; /* Указатель при наведении */
+}
+
+/* Эффект при наведении на кнопки */
+.btn:hover {
+    background-color: #0056b3; /* Темнее цвет фона при наведении */
+}
+
+/* ROOT end */
+/* ******************* */
+/* HEADER start */
+
+header {
+    background: var(--black);
+    padding: 34px 0 33px;
+}
+
+.header__nav-link {
+    margin: 0px 19px;
+    color: var(--white);
+    font-size: 14px;
+    line-height: 10px;
+}
+
+.header__nav-button {
+    color: var(--white);
+    border: 1px solid var(--blue);
+}
+
+.header__nav-search {
+    color: var(--white);
+}
+/* Стили для модального окна */
+.modal {
+    display: none; /* Скрываем модальное окно по умолчанию */
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.4); /* Черный цвет с непрозрачностью */
+  }
+  
+  .modal-content {
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+  }
+  
+  .close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+  }
+  
+  .close:hover,
+  .close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  
+/* HEADER end */
+/* ******************* */
+/* MAIN start */
+
+/* Центрирование секции по горизонтали */
+.main__current {
+    margin-left: auto; /* Автоматический отступ слева */
+    margin-right: auto; /* Автоматический отступ справа */
+    max-width: 800px; /* Ограничение максимальной ширины для секции */
+}
+
+.recognition-container {
+    border: 1px solid #ccc; /* Создание рамки */
+    padding: 20px; /* Добавление отступов вокруг контента */
+    margin-top: 20px; /* Добавление отступа сверху */
+  }
+  
+  .recognition-form {
+    margin-top: 10px; /* Отступ между кнопками */
+  }
+  
+  .recognition-form input[type="file"],
+  .recognition-form input[type="submit"] {
+    margin-right: 10px; /* Отступ между кнопками */
+    padding: 10px; /* Добавление отступа вокруг текста в кнопках */
+    background-color: #007bff; /* Цвет фона кнопок */
+    color: #fff; /* Цвет текста кнопок */
+    border: none; /* Удаление границ кнопок */
+    border-radius: 5px; /* Скругление углов кнопок */
+  }
+  
+  .recognition-form input[type="submit"]:hover {
+    background-color: #0056b3; /* Изменение цвета фона при наведении на кнопку */
+  }
+  
+ /* Стиль для контейнера, который отображает распознанный текст */
+.recognition-output {
+    flex: 1; /* Задает контейнеру гибкость, чтобы он занимал все оставшееся пространство */
+    padding: 10px; /* Добавляет внутренние отступы для более приятного визуального оформления */
+    border: 1px solid #ccc; /* Добавляет границу для выделения области */
+    overflow: auto; /* Включает полосы прокрутки, если содержимое переполняет контейнер */
+}
+
+
+  
+
+.main__current-product {
+    position: relative;
+}
+
+.main__product-inner {
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    color: var(--white);
+    padding: 30px 18px 25px;
+}
+
+.main__product-pic {
+    width: 100%;
+    object-fit: cover;
+}
+
+.main__product-date {
+    margin-bottom: 19px;
+    font-size: 14px;
+    line-height: 18px;
+}
+
+.main__product-txt {
+    font-family: var(--f700);
+    font-size: 26px;
+    line-height: 36px;
+}
+
+.main__product-txt-small {
+    font-family: var(--f700);
+    font-size: 20px;
+    line-height: 30px;
+}
+
+.main__prouduct-preview {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: var(--blue_65);
+    font-size: 30px;
+    color: var(--white);
+    text-transform: uppercase;
+    opacity: 0;
+    transition: 0.5s;
+}
+
+.main__current-product:hover .main__prouduct-preview {
+    opacity: 1;
+    color: var(--white);
+}
+
+.main__interesting .container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.main__cars-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.main__cars-item img {
+    width: 100%;
+    object-fit: cover;
+}
+
+.main__cars-info {
+    max-width: 660px;
+    margin: -125px 0 60px;
+    background: var(--white);
+    padding: 40px 20px 38px 30px;
+    box-shadow: 0 5px 10px 0 #979797;
+    border-radius: 5px;
+}
+
+.main__cars-title {
+    font-size: 25px;
+    line-height: 28px;
+    font-family: var(--f700);
+    color: var(--black_17);
+    margin: 25px 0 22px;
+}
+
+.main__cars-date {
+    font-family: var(--f400);
+    font-style: italic;
+    font-size: 14px;
+    line-height: 18px;
+    color: var(--black_66);
+}
+
+.main__cars-txt {
+    font-family: var(--f400);
+    font-size: 14px;
+    line-height: 24px;
+    color: var(--black_66);
+}
+
+.main__cars-pagination {
+    display: flex;
+    list-style: none;
+}
+
+.main__cars-pagination a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    color: var(--black);
+    border: 1px solid var(--pagination);
+    border-radius: 3px;
+    margin-right: 10px;
+}
+
+.main__cars-pagination a.active {
+    background: var(--black);
+    color: var(--white);
+}
+
+.main__adv img {
+    width: 100%;
+    object-fit: cover;
+}
+
+.leon-hunt-title {
+    color: var(--black_17);
+    font-size: 18px;
+    line-height: 23px;
+    margin: 25px 0 17px;
+    font-family: var(--f700);
+}
+
+.leon-hunt-blogger {
+    font-style: italic;
+    font-size: 14px;
+    line-height: 18px;
+    color: var(--black_99);
+    font-family: var(--f400);
+}
+
+.leon-hunt-txt {
+    font-size: 15px;
+    line-height: 25px;
+    font-family: var(--f400);
+    color: var(--black_66);
+}
+
+.main__posts-title {
+    font-family: var(--f700);
+    font-size: 18px;
+    line-height: 23px;
+    color: var(--black_17);
+    margin: 65px 0 24px;
+}
+
+.main__post div {
+    position: relative;
+}
+
+.main__post .vehicle {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+}
+
+.main__post-title {
+    font-family: var(--f700);
+    color: var(--black_17);
+    font-size: 20px;
+    line-height: 28px;
+    margin: 26px 0 13px;
+}
+
+.main__post-date {
+    font-family: var(--f400);
+    font-style: italic;
+    font-size: 14px;
+    line-height: 18px;
+    margin-bottom: 39px;
+}
+
+.main__instagram-title {
+    margin-top: 20px;
+    margin-bottom: 25px;
+    font-family: var(--f700);
+    font-size: 18px;
+    line-height: 21px;
+}
+
+.main__instagram-images {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.main__instagram-img {
+    max-width: 48%;
+    margin-bottom: 10px;
+}
+
+.main__instagram-icon {
+    margin-right: 10px;
+}
+
+.main__tags-title {
+    margin: 64px 0 27px;
+    font-family: var(--f700);
+    font-weight: bold;
+    font-size: 18px;
+    line-height: 21px;
+}
+
+.main__tags-box {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.main__tag {
+    width: max-content;
+    padding: 10px 16px;
+    background: #ebebeb;
+    border-radius: 3px;
+    color: var(--black_17);
+    margin-right: 10px;
+    margin-bottom: 10px;
+}
+
+.main__newslatter-title {
+    margin: 53px 0 22px;
+    font-family: var(--f700);
+    font-weight: bold;
+    font-size: 18px;
+    line-height: 21px;
+}
+
+.main__newslatter-txt {
+    font-family: var(--f400);
+    font-size: 14px;
+    line-height: 24px;
+    color: var(--black_66);
+    margin-bottom: 34px;
+}
+
+.main__newslatter input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+.main__popular {
+    width: 100%;
+}
+
+.main__popular-title {
+    margin: 90px 0 27px;
+}
+
+.main__popular-box div {
+    position: relative;
+    width: 100%;
+}
+
+.main__popular-box img {
+    width: 100%;
+    object-fit: cover;
+}
+
+.main__popular-box span {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+}
+
+.main__popular-box h4 {
+    font-family: var(--f700);
+    font-size: 20px;
+    line-height: 28px;
+    margin: 26px 0 15px;
+}
+
+.main__popular-box p {
+    font-family: var(--f400);
+    font-style: italic;
+    font-size: 14px;
+    line-height: 18px;
+    color: var(--black_66);
+}
+
+.main__popular {
+    margin-bottom: 80px;
+}
+
+/* MAIN end */
+/* ******************* */
+/* FOOTER start */
+
+footer {
+    background: var(--black_17);
+    padding-top: 60px;
+}
+
+footer .row {
+    justify-content: space-between;
+}
+
+.footer__box-txt {
+    font-family: var(--f400);
+    font-size: 14px;
+    line-height: 22px;
+    color: var(--gray);
+    margin: 59px 0 67px;
+}
+
+.footer__box-touch {
+    font-family: var(--f700);
+    font-size: 20px;
+    line-height: 26px;
+    margin-bottom: 25px;
+    color: var(--white);
+}
+
+.footer__icon {
+    color: #373737;
+    font-size: 40px;
+    margin-right: 10px;
+}
+
+.footer__box h3 {
+    color: var(--white);
+    font-family: var(--f700);
+    font-size: 20px;
+    line-height: 26px;
+    margin-bottom: 29px;
+}
+
+.footer__box-item {
+    display: flex;
+    justify-content: space-between;
+}
+
+.footer__box-item img {
+    width: 95px;
+    height: 95px;
+    border-radius: 5px;
+    margin-right: 10px;
+    margin-bottom: 25px;
+}
+
+.footer__box-item h5 {
+    font-family: var(--f700);
+    font-size: 15px;
+    line-height: 26px;
+    color: var(--white);
+}
+
+.footer__box-item p {
+    font-family: var(--f400);
+    font-style: italic;
+    font-size: 14px;
+    line-height: 14px;
+    color: var(--gray);
+}
+
+.footer__newslatter-title {
+    color: var(--white);
+    font-family: var(--f400);
+    font-size: 20px;
+    line-height: 26px;
+}
+
+.footer__newslatter input {
+    width: 100%;
+    padding: 8px 12px;
+    margin-bottom: 10px;
+    background: #373737;
+    border-radius: 5px;
+}
+
+.footer__info {
+    margin-top: 23px;
+    background: var(--black);
+}
+
+.footer__info-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 42px 0 37px;
+}
+
+.footer__info-copyright {
+    font-family: var(--f400);
+    font-size: 14px;
+    line-height: 18px;
+    color: var(--white);
+}
+
+.footer__menu {
+    display: flex;
+    list-style: none;
+    flex-wrap: wrap;
+}
+
+.footer__menu-link {
+    color: var(--white);
+    margin: 0 16px;
+    font-family: var(--f400);
+    font-size: 14px;
+    line-height: 18px;
+}
+
+/* FOOTER end */
+/* ******************* */
+/* MEDIA start */
+
+.current__grid {
+    display: grid;
+    grid-template-columns: repeat(3, auto);
+    grid-gap: 30px;
+}
+.main__current-product {
+    height: auto;
+}
+.main__current-product:nth-of-type(5n+1) {
+    grid-row: span 2;
+    height: 100%;
+}
+.main__product-pic {
+    width: 100%;
+    height: 100%;
+}
+@media (max-width: 1200px) {
+    .current__grid {
+        grid-template-columns: repeat(2, auto);
+    }
+}
+@media (max-width: 767px) {
+    .main__current-product {
+        height: 250px;
+    }
+    .current__grid {
+        grid-template-columns: auto;
+    }
+    .main__current-product:nth-of-type(5n+1) {
+        grid-row: span 1;
+        height: 250px;
+    }
+    .nav-item {
+        text-align: right;
+    }
+
+    .header__nav-link {
+        display: block;
+        margin: 20px 3px 0 0;
+    }
+
+    .header__nav-search {
+        display: none;
+    }
+
+    .main__current-product {
+        margin-top: 30px;
+    }
+
+    .main__cars-info {
+        margin-top: -20px;
+        margin-bottom: 30px;
+        padding: 20px;
+    }
+
+    .main__cars-pagination {
+        display: none;
+    }
+
+    .footer__menu {
+        display: none;
+    }
+
+    .footer__info-copyright {
+        text-align: center;
+    }
+}
+
+/* MEDIA end */

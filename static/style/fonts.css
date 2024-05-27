@@ -1,0 +1,14 @@
+@font-face {
+    font-family: 'Lato-Regular';
+    src: url(/static/fonts/Lato-Regular.ttf);
+}
+
+@font-face {
+    font-family: 'PTSans-Regular';
+    src: url(/static/fonts/PTSans-Regular.ttf);
+}
+
+@font-face {
+    font-family: 'PTSans-Bold';
+    src: url(/static/fonts/PTSans-Bold.ttf);
+}
